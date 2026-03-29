@@ -7,7 +7,7 @@ For this project, we want to create a casino-style simulator that allows the use
 ---
 ## Team Members
 - Name 1 - Avery Daniel
-- Name 2 - Nico Jelau
+- Name 2 - Nico Jelua
 - Name 3 - Ismeal Perez 
 - Name 4 - Joel Concepcion
 ---
