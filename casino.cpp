@@ -1,5 +1,7 @@
 casino.cpp
 
+
+	
 // RANDOM NUMBER GENERATOR
 int randomInteger() {
 	static random_device rd;
@@ -69,7 +71,7 @@ public:
 	cout << "3. Die Total\n";
   }
 
-  // choose options from 1-3, which will be used for 
+  // choose options from 1-3
 	cout << "Choose option 1-3: "
 		cin >> choice;
    // then depending on options 1-3, switch case will be used to call the game
@@ -92,23 +94,24 @@ public:
 			++outcome;
 		}
 
-		switch (frequency) {  // switch-case for frequency. if frequency is equal to one, then the program will decide if
+		switch (frequency) {  // switch-case for frequency. if frequency is equal to one, then the program will decide if the incremented outcome is equal 
+			// to the frequency value
 		case 1:
-			if (outcome == 1) {
+			if (outcome == frequency) {
 				balance += 10'000;
 			}
 			else {
 				balance -= 1'000;
 			}
 		case 2:
-			if (outcome == 2) {
+			if (outcome == frequency) {
 				balance += 30'000;
 			}
 			else {
 				balance -= 3'000;
 			}
 		case 3:
-			if (outcome == 3) {
+			if (outcome == frequency) {
 				balance += 100'000;
 			}
 			else {
