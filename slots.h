@@ -1,4 +1,4 @@
-// slots class derived from Player class
+ // slots class derived from Player class
 
 class Slots : public Game {
 private:
