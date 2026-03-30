@@ -44,6 +44,7 @@ Polymorphism: Provides member functions for different game behaviors. For instan
 Composition: Each game will have a has-a relationship with its own objects. For example, the SicBo class will have Dice1, Dice2, and Dice3, while the Slots class Blackjack will have deck, deckHand, and playerHand.
 
 Team Contributions
+
 Member 1: [Avery Daniel]
 Worked on the .h and .cpp files for slots and Sic bo
 
