@@ -2,8 +2,7 @@
 #include <iostream>
 #include <fstream>
 
-Casino::Casino(const std::string& playerName, double startingBalance)
-    : player(playerName, startingBalance), running(true) {
+Casino::Casino(const std::string& playerName, double startingBalance) : player(playerName, startingBalance), running(true) {
     loadBalance();
 }
 
