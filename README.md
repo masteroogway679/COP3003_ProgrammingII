@@ -25,35 +25,33 @@ Feature 7: Sic Bo - Users will make a bet on three rolled dice. This can be find
 	Encapsulation:
 Each class will manage its own data (ex, Player handles balance updates), ensuring controlled access through public methods. Specifically, this will be done using setter and getter functions. 
 	
-	 Abstraction:
+Abstraction:
 The Game base class provides a simplified interface “play()”, hiding the complexity of individual game implementations.
-	Inheritance:
+Inheritance:
 Specific games like Blackjack, Roulette, and ? inherit from the Game class to reuse shared structure. The Game class may also inherit from the Player class for withdrawing and depositing money. 
 Polymorphism: Provides member functions for different game behaviors. For instance, Class Game may use the play() function to call other classes like Blackjack, Roulette, and other games to be announced.
 Composition: Each game will have a has-a relationship with its own objects. For example, the SicBo class will have Dice1, Dice2, and Dice3, while the Slots class Blackjack will have deck, deckHand, and playerHand.
 
 ---
 ## Team Contributions
-### Member 1: [Name]
-- Responsibility 1
-- Responsibility 2
-### Member 2: [Name]
-- Responsibility 1
-- Responsibility 2
-### Member 3: [Name]
-- Responsibility 1
-- Responsibility 2
-### Member 4: [Name] (if applicable)
-- Responsibility 1
-- Responsibility 2
+### Member 1: [Avery Daniel]
+Worked on the .h and .cpp files for slots and Sic bo
+ 
+### Member 2: [Nico Jelua]
+Created GitHub repository and worked on the .h and .cpp files for roulette
+ 
+### Member 3: [Ismeal Perez]
+Worked on the .h and .cpp files for class Blackjack. Also worked on the UML Diagram
+### Member 4: [Joel Concepcion]  
+Worked on the .h files for class Player, Game, and save/load system.
+
 ---
 ## AI and External Resources Disclosure (Required)
 You must clearly document **all external help used** in this project.
-### AI Tools
-List any AI tools used (e.g., ChatGPT, Copilot, etc.) and describe:
-- What you asked the AI to do
-- What code or explanation it generated
-- What you modified or learned from it
+### AI Tools: Tools that will be used in the project include ChatGPT, Claude, and Google Gemini. So far, I asked ChatGPT to provide sample codes of polymorphism and abstraction, along with have it explaining each Casino game goal. What I learned so far was an idea of how polymorphism and abstraction work, and the objective of each Casino game. 
+ 
+
+- UML Diagram:
 
 [Untitled document.pdf](https://github.com/user-attachments/files/26336812/Untitled.document.pdf)
 
