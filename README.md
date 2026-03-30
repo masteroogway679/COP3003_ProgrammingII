@@ -69,7 +69,7 @@ AI Tools: Tools that will be used in the project include ChatGPT, Claude, and Go
 
 //PART OF THE UML DIAGRAM ... I WAS NOT ABLE TO EDIT THE FILE - nico//
 ---------------------------------
-        Player
+Player
 ---------------------------------
 - balance : double
 ---------------------------------
@@ -77,20 +77,16 @@ AI Tools: Tools that will be used in the project include ChatGPT, Claude, and Go
 + withdraw(amount : double) : void
 + getBalance() : double
 ---------------------------------
-
-
 ---------------------------------
-           Game
+Game
 ---------------------------------
 # player : Player*
 ---------------------------------
 + Game(p : Player*)
 + play() : void {abstract}
 ---------------------------------
-
-
 ---------------------------------
-         Roulette : Game
+  Roulette : Game
 ---------------------------------
 - winningNumber : int
 ---------------------------------
