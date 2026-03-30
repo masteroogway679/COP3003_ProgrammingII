@@ -1,4 +1,6 @@
  // slots class derived from Player class
+#pragma once
+#include "player.h"
 
 class Slots : public Game {
 private:
