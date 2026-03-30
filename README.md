@@ -1,5 +1,5 @@
 # COP3003_ProgrammingII
-# Project Title
+# Project Title: Casino Simulation
 Brief description of your project (1–2 sentences).
 
 For this project, we want to create a casino-style simulator that allows the user to play classic gambling games through the program. It will allow the user to play using their own decision-making and experience the same (rigged) odds. 
