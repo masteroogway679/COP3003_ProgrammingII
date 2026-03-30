@@ -1,6 +1,7 @@
 # COP3003_ProgrammingII
 
 Project Title: Casino Simulation
+
 Brief description of your project (1–2 sentences).
 
 For this project, we want to create a casino-style simulator that lets the user play classic gambling games within the program. It will allow the user to play using their own decision-making and experience the same (rigged) odds.
@@ -8,8 +9,11 @@ For this project, we want to create a casino-style simulator that lets the user 
 Team Members
 
 Name 1 - Avery Daniel
+
 Name 2 - Nico Jelua
+
 Name 3 - Ismeal Perez
+
 Name 4 - Joel Concepcion
 
 
