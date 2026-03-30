@@ -12,7 +12,7 @@ Name 1 - Avery Daniel
 
 Name 2 - Nico Jelua
 
-Name 3 - Ismeal Perez
+Name 3 - Ismael Perez
 
 Name 4 - Joel Concepcion
 
@@ -67,5 +67,34 @@ AI Tools: Tools that will be used in the project include ChatGPT, Claude, and Go
 
 [uml diagram.pdf](https://github.com/user-attachments/files/26337180/uml.diagram.pdf)
 
+//PART OF THE UML DIAGRAM ... I WAS NOT ABLE TO EDIT THE FILE - nico//
+---------------------------------
+        Player
+---------------------------------
+- balance : double
+---------------------------------
++ deposit(amount : double) : void
++ withdraw(amount : double) : void
++ getBalance() : double
+---------------------------------
 
 
+---------------------------------
+           Game
+---------------------------------
+# player : Player*
+---------------------------------
++ Game(p : Player*)
++ play() : void {abstract}
+---------------------------------
+
+
+---------------------------------
+         Roulette : Game
+---------------------------------
+- winningNumber : int
+---------------------------------
++ Roulette(p : Player*)
++ play() : void
+- spinWheel() : int
+---------------------------------
