@@ -4,11 +4,6 @@
 #include "slots.h"
 using namespace std; 
 
-#include <random>
-#include <format>
-#include <vector>
-using namespace std; 
-
 void Slots::play() override {
         int reelOutcome = threeRandomIntegers(); // set reel outcome equal to the threeRandomIntegers function. This will display the slot results and determine 
       // whether to return 1 or 0
