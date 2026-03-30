@@ -1,6 +1,7 @@
 #include <random>
 #include <format>
 #include <vector>
+#include "slots.h"
 using namespace std; 
 
 #include <random>
