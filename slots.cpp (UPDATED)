@@ -1,0 +1,80 @@
+#include <iostream>
+#include <format>
+#include <random>
+#include <vector>
+using namespace std;
+
+// enum to represent 4 symbols
+enum {
+	Cherry, Lemon, Bell, Seven
+};
+
+// function to get random numbers from 0-3
+// these represent the vector subscripts
+int Slots::randomInteger() {
+	static random_device rd;
+	static default_random_engine engine{ rd() };
+	static uniform_int_distribution randomInt{ 0, 3 };
+	return randomInt(engine);
+}
+
+void playSlots() {
+
+	double amount{ 0.0 };
+	int winCount{ 0 };
+	// first vectors stores 4 strings to represent the symbols
+	vector<string> symbol{ "Cherry", "Lemon", "Bell", "Seven" };
+	// second vector is used to store three numbers
+	vector<int> slotNum{};
+
+	// get initial balance and enter bet amount
+	cout << "Initial balance is $" << player -> getBalance() << endl;
+	cout << "Enter bet amount: ";
+	cin >> amount;
+
+	cout << '\n';
+
+	// add three numbers ranging from 0-3 to the vector
+	for (int i = 0; i < 3; i++) {
+		slotNum.push_back(randomInteger());
+	}
+
+	// now compare the numbers to the enum symbols, which determine whether it displays 
+	// cherry, lemon, bell, or seven
+	for (int i : slotNum) {
+		if (i == Cherry) {
+			cout << symbol[i] << " | ";
+		}
+		else if (i == Lemon) {
+			cout << symbol[i] << " | ";
+		}
+		else if (i == Bell) {
+			cout << symbol[i] << " | ";
+		}
+		else if (i == Seven) {
+			cout << symbol[i] << " | ";
+		}
+	}
+
+	// increment winCount if both symbols match
+	if (slotNum[0] == slotNum[1]) { ++winCount; }
+	if (slotNum[1] == slotNum[2]) { ++winCount; }
+
+	// one match is 2x deposit to account. 
+// two matches are 5x deposit to account
+	if (winCount == 1) {
+		amount *= 2.0;
+		player.deposit(amount);
+	}
+	else if (winCount == 2) {
+		amount *= 5.0;
+		player.deposit(amount);
+		 
+	}
+	// if not, wtihdraw amount
+	else {
+		player.withdraw(amount);
+		 
+	}
+
+}
