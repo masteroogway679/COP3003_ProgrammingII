@@ -27,15 +27,22 @@ void SicBo::play() {
     cout << "\nEnter bet amount: ";
     cin >> amount;
 
-    // choose a dice number from 1-6, will add a while loop to throw exceptions
-    cout << "Pick a number(1 - 6): ";
+    // choose a dice number from 1-6
+    cout << "Pick a number (1 - 6): ";
     cin >> diceNumber;
+
+    // validate input
+    while (diceNumber < 1 || diceNumber > 6) {
+        cout << "Invalid input! Please enter a number between 1 and 6: ";
+        cin >> diceNumber;
+    }
 
     // loop three times and add 3 elements to the vector
     for (int i = 0; i < 3; i++) {
         int randomNum{ randomInteger() };
         threeDice.push_back(randomNum);
     }
+
     // display dices rolled
     cout << "Dices rolled: ";
     for (int i : threeDice) {
@@ -70,4 +77,3 @@ void SicBo::play() {
     }
 
 }
-
