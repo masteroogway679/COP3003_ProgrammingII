@@ -10,4 +10,6 @@ public:
 
     // derived classes will implement their own play functions!
     virtual void play() = 0;
+    // virtual functions need destructors
+    virtual ~Game();
 };
