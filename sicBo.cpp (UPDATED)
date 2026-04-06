@@ -20,12 +20,15 @@ void SicBo::play() {
     double amount{ 0.0 };
     int diceNumber{ 0 }, winCount{ 0 };
     // to store the three dice number
-    vector <int> threeDice{};
+    vector<int> threeDice{};
 
     // enter current balance, then bet amount
     cout << "Current balance: $" << player->getBalance() << "\n";
     cout << "\nEnter bet amount: ";
     cin >> amount;
+
+    // withdraw bet first (player places the bet)
+    player->withdraw(amount);
 
     // choose a dice number from 1-6
     cout << "Pick a number (1 - 6): ";
@@ -50,30 +53,22 @@ void SicBo::play() {
     }
     cout << "\n";
 
-    // now loop through each element in the vector and compare it to your dice number chosen
+    // count matches
     for (int i : threeDice) {
         if (i == diceNumber) {
             ++winCount;
         }
     }
 
-    // 1 match is 2x deposit, 2 matches are 3x deposit, 3 matches are 5x deposit.
+    // payout logic (add winnings back)
     if (winCount == 1) {
-        amount *= 2.0;
-        player->deposit(amount);
+        player->deposit(amount * 2.0);
     }
     else if (winCount == 2) {
-        amount *= 3.0;
-        player->deposit(amount);
+        player->deposit(amount * 3.0);
     }
-
     else if (winCount == 3) {
-        amount *= 5.0;
-        player->deposit(amount);
+        player->deposit(amount * 5.0);
     }
-    // no matches mean withdraw amount
-    else {
-        player->withdraw(amount);
-    }
-
+    // no matches → player already lost bet, nothing else happens
 }
