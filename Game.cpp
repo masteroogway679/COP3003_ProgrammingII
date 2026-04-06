@@ -2,3 +2,4 @@
 
 // Constructor
 Game::Game(Player* p) : player(p) {}
+Game::~Game() {}
