@@ -32,6 +32,10 @@ void Slots::play() {
 	cout << "Enter bet amount: ";
 	cin >> amount;
 
+  // withdraw bet first (player places the bet)
+    player->withdraw(amount);
+
+
 	cout << '\n';
 
 	// add three numbers ranging from 0-3 to the vector
@@ -63,18 +67,13 @@ void Slots::play() {
 	// one match is 2x deposit to account. 
 // two matches are 5x deposit to account
 	if (winCount == 1) {
-		amount *= 2.0;
-		player.deposit(amount);
+		player->deposit(amount * 2.0);
 	}
 	else if (winCount == 2) {
-		amount *= 5.0;
-		player.deposit(amount);
+		player->deposit(amount * 5.0);
 		 
 	}
-	// if not, withdraw amount
-	else {
-		player.withdraw(amount);
-		 
-	}
+
+     // no matches → player already lost bet, nothing else happens
 
 }
