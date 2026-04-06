@@ -18,7 +18,7 @@ int Slots::randomInteger() {
 	return randomInt(engine);
 }
 
-void playSlots() {
+void Slots::play() {
 
 	double amount{ 0.0 };
 	int winCount{ 0 };
@@ -71,7 +71,7 @@ void playSlots() {
 		player.deposit(amount);
 		 
 	}
-	// if not, wtihdraw amount
+	// if not, withdraw amount
 	else {
 		player.withdraw(amount);
 		 
