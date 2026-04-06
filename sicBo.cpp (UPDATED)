@@ -2,70 +2,72 @@
 #include <stdexcept>
 #include <random>
 #include "SicBo.h"
+#include <iostream>
 using namespace std;
+
 
 // get random integer
 int SicBo::randomInteger() {
-	static random_device rd;
-	static default_random_engine engine{ rd() };
-	static uniform_int_distribution randomInt{ 1, 6 };
-	return randomInt(engine);
+    static random_device rd;
+    static default_random_engine engine{ rd() };
+    static uniform_int_distribution randomInt{ 1, 6 };
+    return randomInt(engine);
 }
 
 
 void SicBo::play() {
 
-	double amount{ 0.0 };
-	int diceNumber{ 0 }, winCount{ 0 };
-	// to store the three dice number
-	vector <int> threeDice{};
+    double amount{ 0.0 };
+    int diceNumber{ 0 }, winCount{ 0 };
+    // to store the three dice number
+    vector <int> threeDice{};
 
-	// enter current balance, then bet amount
-	cout << "Current balance: $" << player->getBalance() << "\n";
-	cout << "\nEnter bet amount: ";
-	cin >> amount;
+    // enter current balance, then bet amount
+    cout << "Current balance: $" << player->getBalance() << "\n";
+    cout << "\nEnter bet amount: ";
+    cin >> amount;
 
-	// choose a dice number from 1-6, will add a while loop to throw exceptions
-	cout << "Pick a number(1 - 6): ";
-	cin >> diceNumber;
+    // choose a dice number from 1-6, will add a while loop to throw exceptions
+    cout << "Pick a number(1 - 6): ";
+    cin >> diceNumber;
 
-	// loop three times and add 3 elements to the vector
-	for (int i = 0; i < 3; i++) {
-		int randomNum{ randomInteger() };
-		threeDice.push_back(randomNum);
-	}
-	// display dices rolled
-	cout << "Dices rolled: ";
-	for (int i : threeDice) {
-		cout << i << " ";
-	}
+    // loop three times and add 3 elements to the vector
+    for (int i = 0; i < 3; i++) {
+        int randomNum{ randomInteger() };
+        threeDice.push_back(randomNum);
+    }
+    // display dices rolled
+    cout << "Dices rolled: ";
+    for (int i : threeDice) {
+        cout << i << " ";
+    }
+    cout << "\n";
 
-	// now loop through each element in the vector and compare it to your dice number chosen
-	for (int i : threeDice) {
-		if (i == diceNumber) {
-			++winCount;
-		}
-	}
+    // now loop through each element in the vector and compare it to your dice number chosen
+    for (int i : threeDice) {
+        if (i == diceNumber) {
+            ++winCount;
+        }
+    }
 
-	// 1 match is 2x deposit, 2 matches are 3x deposit, 3 matches are 5x deposit.
-	if (winCount == 1) {
-		amount *= 2.0;
-		player.deposit(amount);
-	}
-	else if (winCount == 2) {
-		amount *= 3.0;
-		player.deposit(amount);
-	}
-		
-	else if (winCount == 3) {
-		amount *= 5.0;
-		player.deposit(amount);
-	}
-	// no matches mean withdraw amount
-	else {
-		player.withdraw(amount);
-	}
+    // 1 match is 2x deposit, 2 matches are 3x deposit, 3 matches are 5x deposit.
+    if (winCount == 1) {
+        amount *= 2.0;
+        player->deposit(amount);
+    }
+    else if (winCount == 2) {
+        amount *= 3.0;
+        player->deposit(amount);
+    }
+
+    else if (winCount == 3) {
+        amount *= 5.0;
+        player->deposit(amount);
+    }
+    // no matches mean withdraw amount
+    else {
+        player->withdraw(amount);
+    }
 
 }
 
- //looks good checked by ish 
