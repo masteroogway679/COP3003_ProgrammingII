@@ -1,4 +1,7 @@
 #include "Casino.h"
+#include "Roulette.h"
+#include "SicBo.h"
+#include "slots.h"
 #include <iostream>
 #include <fstream>
 
@@ -13,10 +16,10 @@ void Casino::displayTitle() const {
 }
 
 void Casino::displayMenu() const {
-    std::cout << "1. Blackjack\n";
+    std::cout << "1. Slots\n";
     std::cout << "2. Roulette\n";
     std::cout << "3. SicBo\n";
-    std::cout << "4. Slots\n";
+    std::cout << "4. Blackjack\n";
     std::cout << "5. Save Game\n";
     std::cout << "6. Exit\n";
     std::cout << "Choose an option: ";
@@ -60,20 +63,26 @@ void Casino::run() {
         }
 
         switch (choice) {
-            case 1:
-                std::cout << "Blackjack coming soon...\n\n";
-            break;
+            case 1: {
+                Slots slots (&player);
+                slots.play();
 
-            case 2:
-                std::cout << "Roulette coming soon...\n\n";
+                break;
+            }
+            case 2: {
+                Roulette roulette (&player);
+                roulette.play();
             break;
+            }
+            case 3: {
+                SicBo sicbo (&player);
+                sicbo.play();
 
-            case 3:
-                std::cout << "Baccarat coming soon...\n\n";
-            break;
-
+                break;
+            }
             case 4:
                   std::cout << "SicBo coming soon...\n\n";
+            break;
 
             case 5:
                 saveBalance();
