@@ -2,78 +2,80 @@
 #include <format>
 #include <random>
 #include <vector>
+#include "slots.h"
 using namespace std;
 
 // enum to represent 4 symbols
 enum {
-	Cherry, Lemon, Bell, Seven
+    Cherry, Lemon, Bell, Seven
 };
 
 // function to get random numbers from 0-3
 // these represent the vector subscripts
 int Slots::randomInteger() {
-	static random_device rd;
-	static default_random_engine engine{ rd() };
-	static uniform_int_distribution randomInt{ 0, 3 };
-	return randomInt(engine);
+    static random_device rd;
+    static default_random_engine engine{ rd() };
+    static uniform_int_distribution randomInt{ 0, 3 };
+    return randomInt(engine);
 }
 
 void Slots::play() {
 
-	double amount{ 0.0 };
-	int winCount{ 0 };
-	// first vectors stores 4 strings to represent the symbols
-	vector<string> symbol{ "Cherry", "Lemon", "Bell", "Seven" };
-	// second vector is used to store three numbers
-	vector<int> slotNum{};
+    double amount{ 0.0 };
+    int winCount{ 0 };
+    // first vectors stores 4 strings to represent the symbols
+    vector<string> symbol{ "Cherry", "Lemon", "Bell", "Seven" };
+    // second vector is used to store three numbers
+    vector<int> slotNum{};
 
-	// get initial balance and enter bet amount
-	cout << "Initial balance is $" << player -> getBalance() << endl;
-	cout << "Enter bet amount: ";
-	cin >> amount;
+    // get initial balance and enter bet amount
+    cout << "Initial balance is $" << player -> getBalance() << endl;
+    cout << "Enter bet amount: ";
+    cin >> amount;
 
-  // withdraw bet first (player places the bet)
+    // withdraw bet first (player places the bet)
     player->withdraw(amount);
 
 
-	cout << '\n';
+    cout << '\n';
 
-	// add three numbers ranging from 0-3 to the vector
-	for (int i = 0; i < 3; i++) {
-		slotNum.push_back(randomInteger());
-	}
+    // add three numbers ranging from 0-3 to the vector
+    for (int i = 0; i < 3; i++) {
+        slotNum.push_back(randomInteger());
+    }
+    cout << "The spin results are: \n";
+    // now compare the numbers to the enum symbols, which determine whether it displays
+    // cherry, lemon, bell, or seven
+    for (int i : slotNum) {
+        if (i == Cherry) {
+            cout << symbol[i] << " | ";
+        }
+        else if (i == Lemon) {
+            cout << symbol[i] << " | ";
+        }
+        else if (i == Bell) {
+            cout << symbol[i] << " | ";
+        }
+        else if (i == Seven) {
+            cout << symbol[i] << " | ";
+        }
+    }
+    cout << "\n\n";
 
-	// now compare the numbers to the enum symbols, which determine whether it displays 
-	// cherry, lemon, bell, or seven
-	for (int i : slotNum) {
-		if (i == Cherry) {
-			cout << symbol[i] << " | ";
-		}
-		else if (i == Lemon) {
-			cout << symbol[i] << " | ";
-		}
-		else if (i == Bell) {
-			cout << symbol[i] << " | ";
-		}
-		else if (i == Seven) {
-			cout << symbol[i] << " | ";
-		}
-	}
+    // increment winCount if both symbols match
+    if (slotNum[0] == slotNum[1]) { ++winCount; }
+    if (slotNum[1] == slotNum[2]) { ++winCount; }
 
-	// increment winCount if both symbols match
-	if (slotNum[0] == slotNum[1]) { ++winCount; }
-	if (slotNum[1] == slotNum[2]) { ++winCount; }
+    // one match is 2x deposit to account.
+    // two matches are 5x deposit to account
+    if (winCount == 1) {
+        player->deposit(amount * 2.0);
+    }
+    else if (winCount == 2) {
+        player->deposit(amount * 5.0);
 
-	// one match is 2x deposit to account. 
-// two matches are 5x deposit to account
-	if (winCount == 1) {
-		player->deposit(amount * 2.0);
-	}
-	else if (winCount == 2) {
-		player->deposit(amount * 5.0);
-		 
-	}
+    }
 
-     // no matches → player already lost bet, nothing else happens
+    // no matches → player already lost bet, nothing else happens
 
 }
