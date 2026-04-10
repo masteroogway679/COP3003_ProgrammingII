@@ -1,5 +1,5 @@
 #pragma once 
-
+#include "Game.h"
 #include <iostream>
 
 // card values
@@ -42,15 +42,27 @@ private:
     int Select_Available_Card(int Card);
 };
 
-class BLACKJACK {
+class Hand {
 public:
     int Cards_Received{};
     int Current_Total{};
     bool Bust{};
     CARD Cards[11]{};
 
-    BLACKJACK();
+    Hand();
 
     int Get_Hand_Total();
     void Add_Card(const CARD& card);
 };
+
+class Blackjack : public Game {
+private:
+      DECK deck;
+      Hand playerHand;
+      Hand dealerHand;
+
+public:
+      Blackjack(Player *p) : Game(p) {}
+
+      void play() override;
+      };
