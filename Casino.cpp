@@ -2,6 +2,7 @@
 #include "Roulette.h"
 #include "SicBo.h"
 #include "slots.h"
+#include "Blackjack.h"
 #include <iostream>
 #include <fstream>
 
@@ -66,7 +67,6 @@ void Casino::run() {
             case 1: {
                 Slots slots (&player);
                 slots.play();
-
                 break;
             }
             case 2: {
@@ -77,11 +77,14 @@ void Casino::run() {
             case 3: {
                 SicBo sicbo (&player);
                 sicbo.play();
-
                 break;
             }
-            case 4:
-                  std::cout << "SicBo coming soon...\n\n";
+            case 4: {
+                Blackjack blackjack (&player);
+                blackjack.play();
+                break;
+            }
+
             break;
 
             case 5:
