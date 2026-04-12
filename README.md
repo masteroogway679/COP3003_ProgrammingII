@@ -65,32 +65,109 @@ AI Tools: Tools that will be used in the project include ChatGPT, Claude, and Go
 
 - UML Diagram:
 
-[uml diagram.pdf](https://github.com/user-attachments/files/26337180/uml.diagram.pdf)
+[uml diagram.pdf](file:///C:/Users/tania/Downloads/uml%20diagram%20updated%20.pdf)
 
-//PART OF THE UML DIAGRAM ... I WAS NOT ABLE TO EDIT THE FILE - nico//
----------------------------------
-Player
----------------------------------
-- balance : double
----------------------------------
-+ deposit(amount : double) : void
-+ withdraw(amount : double) : void
-+ getBalance() : double
----------------------------------
----------------------------------
-Game
----------------------------------
-# player : Player*
----------------------------------
-+ Game(p : Player*)
-+ play() : void {abstract}
----------------------------------
----------------------------------
-  Roulette : Game
----------------------------------
-- winningNumber : int
----------------------------------
-+ Roulette(p : Player*)
-+ play() : void
-- spinWheel() : int
----------------------------------
+//PART OF THE UML DIAGRAM ... I WAS NOT ABLE TO EDIT THE FILE - nico//updated what is in it ish//
++----------------------+
+|       Casino         |
++----------------------+
+| - player: Player     |
+| - running: bool      |
++----------------------+
+| + Casino(name: string, balance: double) |
+| + displayTitle(): void |
+| + displayMenu(): void  |
+| + saveBalance(): void  |
+| + loadBalance(): void  |
+| + run(): void          |
++----------------------+
+
+            |
+            | uses
+            v
+
++----------------------+
+|       Player         |
++----------------------+
+| - name: string       |
+| - balance: double    |
++----------------------+
+| + getName(): string  |
+| + getBalance(): double |
+| + deposit(amount): void |
+| + withdraw(amount): bool |
++----------------------+
+
++----------------------+
+|        Slots         |
++----------------------+
+| - player: Player*    |
++----------------------+
+| + Slots(Player*)     |
+| + play(): void       |
+| + randomInteger(): int |
++----------------------+
+
++----------------------+
+|      Roulette        |
++----------------------+
+| - player: Player*    |
+| - winningNumber: int |
++----------------------+
+| + Roulette(Player*)  |
+| + spinWheel(): int   |
+| + play(): void       |
++----------------------+
+
++----------------------+
+|        SicBo         |
++----------------------+
+| - player: Player*    |
++----------------------+
+| + SicBo(Player*)     |
+| + play(): void       |
+| + randomInteger(): int |
++----------------------+
+
++----------------------+
+|        CARD          |
++----------------------+
+| - Card_Suit: SUIT    |
+| - Card_Rank: RANK    |
++----------------------+
+| + CARD(Card_Number:int) |
+| + Print_Card(): void |
++----------------------+
++---------------------------+
+|          DECK             |
++---------------------------+
+| - Cards_Dealt[52]: bool   |
+| - Cards_Remaining: int    |
++---------------------------+
+| + DECK()                  |
+| + Reshuffle(): void       |
+| + RNG(n:int): int         |
+| + Select_Available_Card(int): int |
+| + Deal_Card(): CARD       |
++---------------------------+
++---------------------------+
+|           Hand            |
++---------------------------+
+| - Cards[11]: CARD         |
+| - Cards_Received: int     |
+| - Current_Total: int      |
+| - Bust: bool              |
++---------------------------+
+| + Hand()                  |
+| + Add_Card(card: CARD): void |
+| + Get_Hand_Total(): int   |
++---------------------------+
++--------+        +--------+
+|  SUIT  |        |  RANK  |
++--------+        +--------+
+| Diamond|        | A      |
+| Club   |        | 2–10   |
+| Spade  |        | Jack   |
+| Heart  |        | Queen  |
+|        |        | King   |
++--------+        +--------+
