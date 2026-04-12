@@ -1,9 +1,9 @@
-#include "blackjack.h"
+#include "Blackjack.h"
 #include <cstdlib>
 #include <ctime>
 
 // card values
-const char* Suits[4] = { "Star", "Club", "Duce", "Heart" };
+const char* Suits[4] = { "Diamond", "Club", "Spade", "Heart" };
 const char* Ranks[13] = {
     "A","2","3","4","5","6","7",
     "8","9","10","Jack","Queen","King"
@@ -15,8 +15,7 @@ CARD::CARD(int Card_Number) {
 }
 
 void CARD::Print_Card() const {
-    std::cout << Ranks[static_cast<int>(Card_Rank) - 1]
-        << Suits[static_cast<int>(Card_Suit)];
+    std::cout << Ranks[static_cast<int>(Card_Rank) - 1] << " (" << Suits[static_cast<int>(Card_Suit)] << ")";
 }
 
 // deck 
@@ -58,13 +57,13 @@ CARD DECK::Deal_Card() {
 }
 
 
-BLACKJACK::BLACKJACK() {
+Hand::Hand() {
     Cards_Received = 0;
     Current_Total = 0;
     Bust = false;
 }
 
-void BLACKJACK::Add_Card(const CARD& card) {
+void Hand::Add_Card(const CARD& card) {
     if (Cards_Received < 11) {
         Cards[Cards_Received++] = card;
         Current_Total = Get_Hand_Total();
@@ -75,7 +74,7 @@ void BLACKJACK::Add_Card(const CARD& card) {
     }
 }
 
-int BLACKJACK::Get_Hand_Total() {
+int Hand::Get_Hand_Total() {
     int total = 0;
     int aces = 0;
 
@@ -100,4 +99,121 @@ int BLACKJACK::Get_Hand_Total() {
     }
 
     return total;
+}
+// actual game implementation
+void Blackjack::play() {
+    double betAmount{0.0};
+    char choice{};
+
+    std::cout << "Current balance: $" << player->getBalance() << "\n";
+    std::cout << "Enter bet amount: ";
+    std::cin >> betAmount;
+
+    if (std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore(1000, '\n');
+        std::cout << "Invalid input.\n\n";
+        return;
+    }
+
+    if (betAmount <= 0 || betAmount > player->getBalance()) {
+        std::cout << "Invalid bet amount.\n\n";
+        return;
+    }
+
+    if (!player->withdraw(betAmount)) {
+        std::cout << "Unable to place bet.\n\n";
+        return;
+    }
+
+    playerHand = Hand();
+    dealerHand = Hand();
+
+    playerHand.Add_Card(deck.Deal_Card());
+    dealerHand.Add_Card(deck.Deal_Card());
+    playerHand.Add_Card(deck.Deal_Card());
+    dealerHand.Add_Card(deck.Deal_Card());
+
+    std::cout << "\nDealer's hand: ";
+    std::cout << "[Hidden], ";
+    dealerHand.Cards[1].Print_Card();
+    std::cout << "\n";
+
+    std::cout << "Your hand: ";
+    for (int i = 0; i < playerHand.Cards_Received; i++) {
+        playerHand.Cards[i].Print_Card();
+        if (i < playerHand.Cards_Received - 1) {
+            std::cout << ", ";
+        }
+    }
+    std::cout << "\nYour total: " << playerHand.Get_Hand_Total() << "\n";
+
+    while (!playerHand.Bust) {
+        std::cout << "Hit or stand? (h/s): ";
+        std::cin >> choice;
+
+        if (choice == 'h' || choice == 'H') {
+            playerHand.Add_Card(deck.Deal_Card());
+
+            std::cout << "Your hand: ";
+            for (int i = 0; i < playerHand.Cards_Received; i++) {
+                playerHand.Cards[i].Print_Card();
+                if (i < playerHand.Cards_Received - 1) {
+                    std::cout << ", ";
+                }
+            }
+            std::cout << "\nYour total: " << playerHand.Get_Hand_Total() << "\n";
+        }
+        else if (choice == 's' || choice == 'S') {
+            break;
+        }
+        else {
+            std::cout << "Invalid choice.\n";
+        }
+    }
+
+    if (playerHand.Bust) {
+        std::cout << "You busted. Dealer wins.\n";
+        std::cout << "New balance: $" << player->getBalance() << "\n\n";
+        return;
+    }
+
+    while (dealerHand.Get_Hand_Total() < 17) {
+        dealerHand.Add_Card(deck.Deal_Card());
+    }
+
+    std::cout << "\nDealer's final hand: ";
+    for (int i = 0; i < dealerHand.Cards_Received; i++) {
+        dealerHand.Cards[i].Print_Card();
+        if (i < dealerHand.Cards_Received - 1) {
+            std::cout << ", ";
+        }
+    }
+    std::cout << "\nDealer total: " << dealerHand.Get_Hand_Total() << "\n";
+
+    std::cout << "Your final hand: ";
+    for (int i = 0; i < playerHand.Cards_Received; i++) {
+        playerHand.Cards[i].Print_Card();
+        if (i < playerHand.Cards_Received - 1) {
+            std::cout << ", ";
+        }
+    }
+    std::cout << "\nYour total: " << playerHand.Get_Hand_Total() << "\n";
+
+    int playerTotal = playerHand.Get_Hand_Total();
+    int dealerTotal = dealerHand.Get_Hand_Total();
+
+    if (dealerHand.Bust || playerTotal > dealerTotal) {
+        player->deposit(betAmount * 2);
+        std::cout << "You win!\n";
+    }
+    else if (playerTotal == dealerTotal) {
+        player->deposit(betAmount);
+        std::cout << "Push. Your bet is returned.\n";
+    }
+    else {
+        std::cout << "Dealer wins.\n";
+    }
+
+    std::cout << "New balance: $" << player->getBalance() << "\n\n";
 }
