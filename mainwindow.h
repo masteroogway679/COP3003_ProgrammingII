@@ -1,6 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+
+
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -38,7 +40,16 @@ private slots:
 
     void on_diceButton_clicked();
 
+    void on_rouletteSpin_clicked();
+
+    void on_dealButton_clicked();
+
+    void on_hitButton_clicked();
+
+    void on_standButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H
+
