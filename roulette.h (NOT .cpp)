@@ -1,0 +1,19 @@
+#ifndef ROULETTE_H
+#define ROULETTE_H
+
+#pragma once
+#include "Game.h"
+
+class Roulette : public Game {
+private:
+    int winningNumber, chosenNumber;
+
+public:
+
+    Roulette(Player* p);
+    std::string applyResult(double amount, int chosenNumber);
+    int spinWheel();
+    void play() override;
+};
+
+#endif // ROULETTE_H
