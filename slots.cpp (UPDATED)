@@ -20,6 +20,10 @@ int Slots::randomInteger() {
 }
 
 void Slots::play() {
+    if (player->getBalance() <= 0) {
+        std::cout << "You have no money left to bet.\n\n";
+        return;
+    }
 
     double amount{ 0.0 };
     int winCount{ 0 };
@@ -32,6 +36,18 @@ void Slots::play() {
     cout << "Initial balance is $" << player -> getBalance() << endl;
     cout << "Enter bet amount: ";
     cin >> amount;
+
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cout << "Invalid input.\n\n";
+        return;
+    }
+
+    if (amount <= 0 || amount > player->getBalance()) {
+        cout << "Invalid bet amount.\n\n";
+        return;
+    }
 
     // withdraw bet first (player places the bet)
     player->withdraw(amount);
