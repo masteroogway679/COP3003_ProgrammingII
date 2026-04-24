@@ -12,6 +12,12 @@ int Roulette::spinWheel() {
 }
 
 void Roulette::play() {
+
+        if (player->getBalance() <= 0) {
+            std::cout << "You have no money left to bet.\n\n";
+            return;
+        }
+
     double betAmount;
     int chosenNumber;
 
@@ -21,8 +27,25 @@ void Roulette::play() {
     std::cout << "Enter bet amount: $";
     std::cin >> betAmount;
 
+    if (std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore(1000, '\n');
+        std::cout << "Invalid input.\n\n";
+        return;
+    }
+
+    if (betAmount <= 0 || betAmount > player->getBalance()) {
+        std::cout << "Invalid bet amount.\n\n";
+        return;
+    }
+
     std::cout << "Choose a number (0-36): ";
     std::cin >> chosenNumber;
+
+    if (chosenNumber < 0 || chosenNumber > 36) {
+        std::cout << "Invalid number. Choose 0 through 36.\n\n";
+        return;
+    }
 
     player->withdraw(betAmount);
 
