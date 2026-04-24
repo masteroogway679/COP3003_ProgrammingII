@@ -102,6 +102,12 @@ int Hand::Get_Hand_Total() {
 }
 // actual game implementation
 void Blackjack::play() {
+
+    if (player->getBalance() <= 0) {
+        std::cout << "You have no money left to bet.\n\n";
+        return;
+    }
+
     double betAmount{0.0};
     char choice{};
 
