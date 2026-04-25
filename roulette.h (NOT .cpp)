@@ -6,14 +6,15 @@
 
 class Roulette : public Game {
 private:
-    int winningNumber, chosenNumber;
+    int winningNumber = 0;
 
 public:
 
-    Roulette(Player* p);
-    std::string applyResult(double amount, int chosenNumber);
+    Roulette(Player* p) : Game(p) {}
+    std::string applyResult(double amount, int chosenNumber, int winningNumber);
     int spinWheel();
     void play() override;
 };
 
 #endif // ROULETTE_H
+
