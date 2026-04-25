@@ -1,5 +1,6 @@
 #include format
 #include <stdexcept>
+#include <vector>
 #include <random>
 #include "sicBo.h"
 using namespace std;
