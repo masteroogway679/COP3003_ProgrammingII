@@ -4,6 +4,12 @@ class Game {
 protected:
     Player* player;
 
+template <typename T>
+bool isBetween(T value, T min, T max) const {
+    return value >= min && value <= max;
+}
+
+
 public:
     // Constructor
     Game(Player* p);
