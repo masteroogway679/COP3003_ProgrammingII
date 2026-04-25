@@ -1,6 +1,10 @@
-#include <random>
+ #include <random>
 #include "sicBo.h"
 using namespace std;
+
+void SicBo::play() {
+
+}
 
 // get random integer
 int SicBo::randomInteger() {
