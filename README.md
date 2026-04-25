@@ -2,7 +2,7 @@
 
 Project Title: Casino Simulation
 
-Brief description of your project (1–2 sentences).
+Brief description:
 
 For this project, we want to create a casino-style simulator that lets the user play classic gambling games within the program. It will allow the user to play using their own decision-making and experience the same (rigged) odds.
 
@@ -31,11 +31,11 @@ Feature 6: Save/Load System – Users can save their balance and load it into th
 
 Feature 7: Sic Bo - Users place bets on three dice. This can be finding a specific total combination or a specific two-combination.
 
-OOP Concepts Used
+OOP Concepts Used:
 
-OOP Concepts to be used: Encapsulation: Each class will manage its own data (ex, Player handles balance updates), ensuring controlled access through public methods. Specifically, this will be done using setter and getter functions.
+Encapsulation: Each class will manage its own data (ex, Player handles balance updates), ensuring controlled access through public methods. Specifically, this will be done using setter and getter functions.
 
-Abstraction: The Game base class provides a simplified interface, “play()”, that hides the complexity of individual game implementations. 
+Abstraction: The Game base class provides a simplified interface, “play()”, that hides the complexity of individual game implementations. Game acts as our abstract class, giving all games a play() function, but forcing derived classes to implement their own version of it by being a pure virtual function.
 
 Inheritance: Specific games like Blackjack, Roulette, and ? inherit from the Game class to reuse shared structure. The Game class may also inherit from the Player class to withdraw and deposit money. 
 
@@ -59,17 +59,16 @@ Worked on the .h and .cpp files for the class Blackjack. Also worked on the UML 
 Presented the UML diagram for the project
 
 Member 4: [Joel Concepcion]
-Worked on the .h files for class Player, Game, and save/load system.
+Worked on the .h files for class Player and Game. Added blackjack implementation and polished code. 
 Presented abstraction + code snippet + live demo for the project
 
 AI and External Resources Disclosure (Required)
 You must clearly document all external help used in this project.
 
-AI Tools: Tools that will be used in the project include ChatGPT, Claude, and Google Gemini. So far, I asked ChatGPT to provide sample code for polymorphism and abstraction, along with explanations of each Casino game's goal. So far, I have learned how polymorphism and abstraction work and the objective of each Casino game.
+AI Tools: Tools that will be used in the project include ChatGPT, Claude, and Google Gemini. Claude helped in giving us a class design and means of dividing work in the project. ChatGPT was asked to provide sample code for polymorphism and abstraction, along with explanations of each Casino game's goal. So far, I have learned how polymorphism and abstraction work and the objective of each Casino game. AI was also used to help with input validation using cin.fail, clear, and ignore. 
 
 CHAT GPT ALSO ASSISTED WITH:
 
-SETTING UP THE CODE WITH CASINO.CPP (SPECFICALLY WITH CIN.IGNORE).
 PROVIDING A BREAKDOWN OF WHAT SICBO, SLOTS, AND BLACKJACK DO
 FIXING COMPILER AND LOGICAL ERRORS WITH PURE C++ CODE
 CONSTRUCTING A WORKABLE SLOTS.H AND SLOT.CPP CODE FOR THE GUI
@@ -78,39 +77,3 @@ PROVIDING STARTER CODE ON HOW TO ADD A GAME OVER PAGE TO THE GUI
 EXPLAINED HOW TO IMPLEMENT GUI BUTTONS, PAGES, QLINEEDITS, AND ANIMATION FOR ALL THREE GAMES
 
 ALSO, CHATGPT AND GOOGLE GEMINI EXPLAINED WHAT QTIMER WAS AND HOW TO USE IT IN MY MODE
-YOUTUBE WAS ALSO USED TO FIGURE OUT HOW TO DOWNLOAD QTCREATOR
-
-
- 
-
-- UML Diagram:
-
-[uml diagram.pdf](https://github.com/user-attachments/files/26337180/uml.diagram.pdf)
-
-//PART OF THE UML DIAGRAM ... I WAS NOT ABLE TO EDIT THE FILE - nico//
----------------------------------
-Player
----------------------------------
-- balance : double
----------------------------------
-+ deposit(amount : double) : void
-+ withdraw(amount : double) : void
-+ getBalance() : double
----------------------------------
----------------------------------
-Game
----------------------------------
-# player : Player*
----------------------------------
-+ Game(p : Player*)
-+ play() : void {abstract}
----------------------------------
----------------------------------
-  Roulette : Game
----------------------------------
-- winningNumber : int
----------------------------------
-+ Roulette(p : Player*)
-+ play() : void
-- spinWheel() : int
----------------------------------
