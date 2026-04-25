@@ -4,10 +4,15 @@
 
 
 #include <QMainWindow>
+#include <QTimer>
+
+
+
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class MainWindow;
+class MainWindow; 
 }
 QT_END_NAMESPACE
 
@@ -42,14 +47,14 @@ private slots:
 
     void on_rouletteSpin_clicked();
 
-    void on_dealButton_clicked();
 
-    void on_hitButton_clicked();
 
-    void on_standButton_clicked();
+    void on_restartButton_clicked();
+
+    void checkGameOver();
+    void on_pushButton_5_clicked();
 
 private:
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H
-
