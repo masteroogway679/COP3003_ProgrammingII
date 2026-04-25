@@ -46,21 +46,41 @@ Composition: Each game will have a has-a relationship with its own objects. For 
 Team Contributions
 
 Member 1: [Avery Daniel]
-Worked on the .h and .cpp files for slots and Sic bo
+Worked on the .h and .cpp files for slots and Sicbo
+Presented problem + goal, program features, and encapsulation for the project
+Set up a funcitonal GUI for the project
 
 Member 2: [Nico Jelua]
 Created a GitHub repository and worked on the .h and .cpp files for roulette
+Presented probability + statistics and UML diagram for the project
 
 Member 3: [Ismeal Perez]
 Worked on the .h and .cpp files for the class Blackjack. Also worked on the UML Diagram.
+Presented the UML diagram for the project
 
 Member 4: [Joel Concepcion]
 Worked on the .h files for class Player, Game, and save/load system.
+Presented abstraction + code snippet + live demo for the project
 
 AI and External Resources Disclosure (Required)
 You must clearly document all external help used in this project.
 
 AI Tools: Tools that will be used in the project include ChatGPT, Claude, and Google Gemini. So far, I asked ChatGPT to provide sample code for polymorphism and abstraction, along with explanations of each Casino game's goal. So far, I have learned how polymorphism and abstraction work and the objective of each Casino game.
+
+CHAT GPT ALSO ASSISTED WITH:
+
+SETTING UP THE CODE WITH CASINO.CPP (SPECFICALLY WITH CIN.IGNORE).
+PROVIDING A BREAKDOWN OF WHAT SICBO, SLOTS, AND BLACKJACK DO
+FIXING COMPILER AND LOGICAL ERRORS WITH PURE C++ CODE
+CONSTRUCTING A WORKABLE SLOTS.H AND SLOT.CPP CODE FOR THE GUI
+FIXING COMPILER AND LOGICAL ERRORS WITH GUI CODE (THIS ALSO INCLUDED THE SICBO AND ROULETTE .CPP AND .H FILES)
+PROVIDING STARTER CODE ON HOW TO ADD A GAME OVER PAGE TO THE GUI
+EXPLAINED HOW TO IMPLEMENT GUI BUTTONS, PAGES, QLINEEDITS, AND ANIMATION FOR ALL THREE GAMES
+
+ALSO, CHATGPT AND GOOGLE GEMINI EXPLAINED WHAT QTIMER WAS AND HOW TO USE IT IN MY MODE
+YOUTUBE WAS ALSO USED TO FIGURE OUT HOW TO DOWNLOAD QTCREATOR
+
+
  
 
 - UML Diagram:
